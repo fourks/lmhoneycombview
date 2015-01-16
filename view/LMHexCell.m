@@ -43,6 +43,14 @@
 @synthesize mData;
 @synthesize mSelected;
 
+- (int)getColumn {
+    return mCol;
+}
+
+- (int)getRow {
+    return mRow;
+}
+
 - (void)setSelected:(BOOL)selected {
     mSelected = selected;
     [self setDirty:YES];

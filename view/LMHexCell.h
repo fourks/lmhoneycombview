@@ -24,6 +24,9 @@
 - (id)initWithColumn:(int)col row:(int)row;
 - (id)initWithColumn:(int)col row:(int)row data:(id)data;
 
+@property (readonly, nonatomic) int column;
+@property (readonly, nonatomic) int row;
+
 @property (readonly, getter = centre) NSPoint mCentre;
 @property (readonly, getter = radius) CGFloat mRadius;
 @property (readonly, getter = path) NSBezierPath *mPath;
