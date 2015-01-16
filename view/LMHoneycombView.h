@@ -12,35 +12,35 @@
 
 @class LMHexCell;
 
-extern NSString* const LMHoneycombViewDefaultColor;
-extern NSString* const LMHoneycombViewSelectedColor;
-extern NSString* const LMHoneycombViewBorderColor;
-extern NSString* const LMHoneycombViewSelectedBorderColor;
-extern NSString* const LMHoneycombViewBorderWidth;
+extern NSString *const LMHoneycombViewDefaultColor;
+extern NSString *const LMHoneycombViewSelectedColor;
+extern NSString *const LMHoneycombViewBorderColor;
+extern NSString *const LMHoneycombViewSelectedBorderColor;
+extern NSString *const LMHoneycombViewBorderWidth;
 
 @interface LMHoneycombView : NSView {
-  LMHexCell             *mSelected;
-  
-  id<LMHoneycombMatrix> mDataSource;
-  id                    mDelegate;
-  
-  int                   mCols;
-  int                   mRows;
-  
-  BOOL                  mRecalculateCellPaths;
-  
-  NSBitmapImageRep      *mViewCache;
-  
-  NSMutableDictionary   *mDrawingAttributes;
+    LMHexCell *mSelected;
+    
+    id <LMHoneycombMatrix> mDataSource;
+    id mDelegate;
+    
+    int mCols;
+    int mRows;
+    
+    BOOL mRecalculateCellPaths;
+    
+    NSBitmapImageRep *mViewCache;
+    
+    NSMutableDictionary *mDrawingAttributes;
 }
 
-@property (readonly,getter=drawingAttributes) NSMutableDictionary *mDrawingAttributes;
-@property (readonly,getter=cols) int mCols;
-@property (readonly,getter=rows) int mRows;
-@property (getter=delegate,setter=setDelegate:) id mDelegate;
-@property (getter=recalculateCellPaths,setter=setRecalculateCellPaths:) BOOL mRecalculateCellPaths;
-@property (getter=selected,setter=setSelected:) LMHexCell *mSelected;
-@property (getter=dataSource,setter=setDataSource:) id<LMHoneycombMatrix> mDataSource;
+@property (readonly, nonatomic, getter = drawingAttributes) NSMutableDictionary *mDrawingAttributes;
+@property (readonly, nonatomic, getter = cols) int mCols;
+@property (readonly, nonatomic, getter = rows) int mRows;
+@property (nonatomic, assign, getter = delegate, setter = setDelegate :) id mDelegate;
+@property (getter = recalculateCellPaths, setter = setRecalculateCellPaths :) BOOL mRecalculateCellPaths;
+@property (nonatomic, strong, getter = selected, setter = setSelected :) LMHexCell *mSelected;
+@property (nonatomic, strong, getter = dataSource, setter = setDataSource :) id <LMHoneycombMatrix> mDataSource;
 
 - (void)dataSourceChanged;
 

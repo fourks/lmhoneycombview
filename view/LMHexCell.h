@@ -30,7 +30,7 @@
 @property (readonly, getter = col) int mCol;
 @property (readonly, getter = row) int mRow;
 @property (nonatomic, assign, getter = data, setter = setData:) id mData;
-@property (getter = selected, setter = setSelected:) BOOL mSelected;
+@property (nonatomic, getter = selected, setter = setSelected:) BOOL mSelected;
 @property (getter = dirty, setter = setDirty:) BOOL mDirty;
 
 - (void)setHexCentre:(NSPoint)centre radius:(CGFloat)radius;

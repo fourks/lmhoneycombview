@@ -17,20 +17,20 @@
 #pragma mark Initializers
 
 - (id)initWithColumn:(int)col row:(int)row {
-  return [self initWithColumn:col row:row data:nil];
+    return [self initWithColumn:col row:row data:nil];
 }
 
 - (id)initWithColumn:(int)col row:(int)row data:(id)data {
-  if( self = [super init] ) {
-    mPath     = nil;
-    mCol      = col;
-    mRow      = row;
-    mData     = data;
-    mSelected = NO;
-    mDirty    = YES;
-  }
-  
-  return self;
+    if (self = [super init]) {
+        mPath     = nil;
+        mCol      = col;
+        mRow      = row;
+        mData     = data;
+        mSelected = NO;
+        mDirty    = YES;
+    }
+    
+    return self;
 }
 
 #pragma mark Properties
@@ -44,46 +44,45 @@
 @synthesize mSelected;
 
 - (void)setSelected:(BOOL)selected {
-  mSelected = selected;
-  [self setDirty:YES];
+    mSelected = selected;
+    [self setDirty:YES];
 }
 
 @synthesize mDirty;
 
 - (void)setHexCentre:(NSPoint)centre radius:(CGFloat)radius {
-  mCentre = centre;
-  mRadius = radius;
-  
-  mPath = [NSBezierPath bezierPath];
-  [mPath appendHexagonWithCentre:centre radius:radius];
-  [self setDirty:YES];
+    mCentre = centre;
+    mRadius = radius;
+    
+    mPath = [NSBezierPath bezierPath];
+    [mPath appendHexagonWithCentre:centre radius:radius];
+    [self setDirty:YES];
 }
-
 
 - (void)drawOnHoneycombView:(LMHoneycombView *)view withAttributes:(NSMutableDictionary *)attributes {
-  if( [self selected] ) {
-    [[attributes objectForKey:LMHoneycombViewSelectedColor] set];
-  } else {
-    [[attributes objectForKey:LMHoneycombViewDefaultColor] set];
-  }
-  [[self path] fill];
-  
-  if( [self selected] ) {
-    [[attributes objectForKey:LMHoneycombViewSelectedBorderColor] set];
-  } else {
-    [[attributes objectForKey:LMHoneycombViewBorderColor] set];
-  }
-  
-  [[self path] setLineWidth:[[attributes objectForKey:LMHoneycombViewBorderWidth] floatValue]];
-  [[self path] stroke];
-  
-  [self setDirty:NO];
+    if ([self selected]) {
+        [(NSColor *)[attributes objectForKey:LMHoneycombViewSelectedColor] set];
+    }
+    else {
+        [(NSColor *)[attributes objectForKey:LMHoneycombViewDefaultColor] set];
+    }
+    [[self path] fill];
+    
+    if ([self selected]) {
+        [(NSColor *)[attributes objectForKey:LMHoneycombViewSelectedBorderColor] set];
+    }
+    else {
+        [(NSColor *)[attributes objectForKey:LMHoneycombViewBorderColor] set];
+    }
+    
+    [[self path] setLineWidth:[[attributes objectForKey:LMHoneycombViewBorderWidth] floatValue]];
+    [[self path] stroke];
+    
+    [self setDirty:NO];
 }
-
 
 - (NSMenu *)contextMenu {
-  return nil;
+    return nil;
 }
-
 
 @end
